@@ -1,13 +1,13 @@
+const div = document.getElementById("content");
 function component() {
   const element = document.createElement("div");
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = "Hello im linked";
+  element.innerHTML = "Index.js linked";
 
   return element;
 }
 
-document.body.appendChild(component());
+div.appendChild(component());
 
 // todo's will contain:
 // title, description, dueDate, priority, completed tick box, delete button, drop down for adding the todo to a project but not display it with the todo
