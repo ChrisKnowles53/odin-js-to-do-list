@@ -1,8 +1,5 @@
 import "./styles.css";
 import dateFormat from "./datefns";
-import createToDo from "./todo";
-
-createToDo(1, "text in index.js, factory funciton in todo.js");
 
 let date = "2014, 01, 11";
 console.log(`Im in index.js ${dateFormat(date)}`);
