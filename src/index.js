@@ -46,3 +46,5 @@ div.appendChild(component());
 
 // ✨✨ next task start to think about how we do above and make a plan - !!!!!!start small and build acordingly!!!!!!!!
 // 💥 think about SOLID and keeping functions small and reusable
+
+// 💥 utilise local storage so we dont loose any data if we refresh
