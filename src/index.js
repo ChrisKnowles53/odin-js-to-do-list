@@ -1,42 +1,57 @@
 import "./styles.css";
 import dateFormat from "./datefns";
+import createToDo from "./todo";
+import addProjectDiv from "./projects";
+
+addProjectDiv();
+
+function handleAddToDoClick() {
+  const dialog = document.querySelector("dialog");
+  dialog.showModal();
+}
+
+function handleCloseButtonClick() {
+  const dialog = document.querySelector("dialog");
+  dialog.close();
+}
+
+function handleFormSubmit(event) {
+  //uuidv4 - I had webpack build issues so i paused on that
+  const uniqueId = Math.random() * 256;
+
+  const addToDoForm = document.getElementById("addToDoForm");
+  console.log(event);
+  event.preventDefault();
+
+  const dialog = document.querySelector("dialog");
+  const title = document.getElementById("title").value;
+  const description = document.getElementById("description").value;
+
+  createToDo(uniqueId, title, description);
+
+  dialog.close();
+  addToDoForm.reset();
+}
+
+document.addEventListener("click", function (event) {
+  if (event.target.matches(".add-ToDo")) {
+    handleAddToDoClick();
+  } else if (event.target.matches("dialog button")) {
+    handleCloseButtonClick();
+  }
+});
+
+const addToDoForm = document.getElementById("addToDoForm");
+addToDoForm.addEventListener("submit", handleFormSubmit);
 
 let date = "2014, 01, 11";
 console.log(`Im in index.js ${dateFormat(date)}`);
 
-const div = document.getElementById("content");
-function component() {
-  const element = document.createElement("div");
+// todo.js - Started not completed
 
-  element.innerHTML = "Index.js linked";
+// projects.js - Started currently hardcoded and appending as div
 
-  return element;
-}
-
-div.appendChild(component());
-
-// todo's will:
-// be created dynamically using factory or constructor to generate them
-// title, description, dueDate, priority, completed tick box, delete button, drop down for adding the todo to a project but not display it with the todo
-// 💥 what about a button and when clicked it uses a dialog box with a form in it
-// 💥 think about how the todo's are stored for easy retrieval into lists
-
-// projects will:
-// have a project heading name
-// contain relevant todos
-// 💥 div which contains a list of todos
-
-// pageLoad.js will:
-// default to a "starting" project
-// this project will be the default setting for todos if no project is selected
-// display create new project button
-// display create new task button
-// display page title
-// display todays date
-// display all projects - need to think about how to style these at the end
-// display icon to expand each project and see the todo's associated with it
-// display a task as a summary with a dropdown for expanding to see details and show the Edit and Delete buttons
-// 💥 💭 page load should not manipulate any data - it should only act as a display different functions
+// pageLoad.js
 
 // create a Todo -  when creating a todo users must fill in all the todo contents and have a project picker list
 // create a project - have an ability to add a new project name think array of project names that contian objects of todos?
