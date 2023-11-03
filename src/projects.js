@@ -1,7 +1,9 @@
 import createMyElement from "./createElement";
 import { updateProjectDropdown } from "./dom";
+import { displayToDosForEachProject } from "./dom";
+import { todos } from "./todo";
 
-let projectArray = ["Getting Started"];
+let projectArray = [];
 
 const createProject = (title) => {
   projectArray.push(title);
@@ -17,6 +19,9 @@ function addProjectDiv(projectArray) {
   projectArray.forEach(function (title, index) {
     const projectDiv = createMyElement("div", title, title, title);
     contentDiv.appendChild(projectDiv);
+    const projectButton = createMyElement("button", "See ToDo's", title, title);
+    projectDiv.appendChild(projectButton);
+    displayToDosForEachProject(todos, title);
   });
 }
 

@@ -4,7 +4,7 @@ import initaliseEventListeners from "./dom";
 import createProject from "./projects";
 
 initaliseEventListeners();
-createProject(); // this is used wrongly - this adds an empty item to the array
+createProject("GettingStarted");
 
 let date = "2014, 01, 11";
 console.log(`Im in index.js ${dateFormat(date)}`);
