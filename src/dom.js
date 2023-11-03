@@ -75,8 +75,12 @@ function displayToDosForEachProject(todos, projectName) {
   //   projectDiv.innerHTML = "";
 
   projectTodos.forEach((todo) => {
-    const listItem = createMyElement("li", "list", "list", "list");
-    listItem.textContent = `Title: ${todo.title}`;
+    const listItem = createMyElement(
+      "li",
+      `Title: ${todo.title}`,
+      `list${todo.title}`,
+      `list${todo.title}`
+    );
     console.log(projectDiv);
     projectDiv.appendChild(listItem);
   });

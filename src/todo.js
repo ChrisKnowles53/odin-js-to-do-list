@@ -16,8 +16,12 @@ const todos = [
     project: "GettingStarted",
   },
 ];
+// 💥💥💥💥💥💥 - This is what i need to resolve as this clears teh heading as well as the list - without the projectDiv.innerHTML="" it keeps adding the todos duplicating the content.
+// could this be doen by invoking the function addProjectDiv??
 
 const createToDo = (id, title, description, project) => {
+  const projectDiv = document.getElementById(project);
+  projectDiv.innerHTML = "";
   const todo = {
     id,
     title,
