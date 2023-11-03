@@ -8,11 +8,12 @@
 
 // it will be used many times so use factory function
 
-const createToDo = (id, title, description) => {
+const createToDo = (id, title, description, project) => {
   return console.log({
     id,
     title,
     description,
+    project,
   });
 };
 

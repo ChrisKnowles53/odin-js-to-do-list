@@ -1,5 +1,7 @@
 import createToDo from "./todo";
 import createProject from "./projects";
+import { projectArray } from "./projects";
+import createMyElement from "./createElement";
 
 function handleAddProject() {
   const projectTitleInput = document.getElementById("projectTitle");
@@ -22,17 +24,18 @@ function handleCloseButtonClick() {
 }
 
 function handleFormSubmit(event) {
+  event.preventDefault();
   //uuidv4 - I had webpack build issues so i paused on that
   const uniqueId = Math.random() * 256;
 
   const addToDoForm = document.getElementById("addToDoForm");
-  event.preventDefault();
 
   const dialog = document.querySelector("dialog");
   const title = document.getElementById("title").value;
   const description = document.getElementById("description").value;
+  const project = document.getElementById("project").value;
 
-  createToDo(uniqueId, title, description);
+  createToDo(uniqueId, title, description, project);
 
   dialog.close();
   addToDoForm.reset();
@@ -51,3 +54,15 @@ export default function initaliseEventListeners() {
   const addToDoForm = document.getElementById("addToDoForm");
   addToDoForm.addEventListener("submit", handleFormSubmit);
 }
+
+function updateProjectDropdown() {
+  const projectDropdown = document.getElementById("project");
+  projectDropdown.innerHTML = "";
+
+  projectArray.forEach(function (title, index) {
+    const option = createMyElement("option", title, title, title);
+    projectDropdown.appendChild(option);
+  });
+}
+
+export { updateProjectDropdown };
