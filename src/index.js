@@ -1,9 +1,20 @@
 import "./styles.css";
 import dateFormat from "./datefns";
 import createToDo from "./todo";
-import addProjectDiv from "./projects";
+import createProject from "./projects";
 
-addProjectDiv();
+// createProject("Created via index.js");
+// next step add an event listener and change this hardcode to be dynamic input
+
+function handleAddProject() {
+  const projectTitleInput = document.getElementById("projectTitle");
+  const projectTitle = projectTitleInput.value;
+
+  if (projectTitle.trim() !== "") {
+    createProject(projectTitle);
+  }
+  projectTitleInput.value = "";
+}
 
 function handleAddToDoClick() {
   const dialog = document.querySelector("dialog");
@@ -20,7 +31,6 @@ function handleFormSubmit(event) {
   const uniqueId = Math.random() * 256;
 
   const addToDoForm = document.getElementById("addToDoForm");
-  console.log(event);
   event.preventDefault();
 
   const dialog = document.querySelector("dialog");
@@ -38,6 +48,8 @@ document.addEventListener("click", function (event) {
     handleAddToDoClick();
   } else if (event.target.matches("dialog button")) {
     handleCloseButtonClick();
+  } else if (event.target.matches(".addProjectButton")) {
+    handleAddProject();
   }
 });
 
