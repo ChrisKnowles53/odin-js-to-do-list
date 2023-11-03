@@ -1,10 +1,12 @@
 import createMyElement from "./createElement";
+import { updateProjectDropdown } from "./dom";
 
 let projectArray = ["Getting Started"];
 
 const createProject = (title) => {
   projectArray.push(title);
   console.log(`project.js ${projectArray}`);
+  updateProjectDropdown();
   addProjectDiv(projectArray);
 };
 
@@ -19,3 +21,4 @@ function addProjectDiv(projectArray) {
 }
 
 export default createProject;
+export { projectArray };
