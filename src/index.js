@@ -1,8 +1,10 @@
 import "./styles.css";
 import dateFormat from "./datefns";
 import initaliseEventListeners from "./dom";
+import createProject from "./projects";
 
 initaliseEventListeners();
+createProject();
 
 let date = "2014, 01, 11";
 console.log(`Im in index.js ${dateFormat(date)}`);
