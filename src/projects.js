@@ -2,6 +2,7 @@ import createMyElement from "./createElement";
 import { updateProjectDropdown } from "./dom";
 import { displayToDosForEachProject } from "./dom";
 import { todos } from "./todo";
+import trimWhitespace from "./trimWhitespace";
 
 let projectArray = [];
 
@@ -17,10 +18,11 @@ function addProjectDiv(projectArray) {
   contentDiv.innerHTML = "";
 
   projectArray.forEach(function (title, index) {
+    const trimmedTitle = trimWhitespace(title);
     const projectDiv = createMyElement("div", title, title, title);
     contentDiv.appendChild(projectDiv);
-    const projectButton = createMyElement("button", "See ToDo's", title, title);
-    projectDiv.appendChild(projectButton);
+    // const projectButton = createMyElement("button", "See ToDo's", title, title);
+    // projectDiv.appendChild(projectButton);
     displayToDosForEachProject(todos, title);
   });
 }

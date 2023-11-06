@@ -2,6 +2,7 @@ import createToDo from "./todo";
 import createProject from "./projects";
 import { projectArray } from "./projects";
 import createMyElement from "./createElement";
+import trimWhitespace from "./trimWhitespace";
 
 function handleAddToDoClick() {
   const dialog = document.querySelector("dialog");
@@ -32,7 +33,7 @@ function handleFormSubmit(event) {
 }
 
 export default function initaliseEventListeners() {
-  document.addEventListener("click", function (event) {
+  document.addEventListener("click", (event) => {
     if (event.target.matches(".add-ToDo")) {
       handleAddToDoClick();
     } else if (event.target.matches("dialog button")) {
@@ -58,12 +59,13 @@ function updateProjectDropdown() {
   const projectDropdown = document.getElementById("project");
   projectDropdown.innerHTML = "";
 
-  projectArray.forEach(function (title, index) {
+  projectArray.forEach((title, index) => {
+    const trimmedTitle = trimWhitespace(title);
     const option = createMyElement(
       "option",
       title,
-      `option${title}`,
-      `option${title}`
+      `option${trimmedTitle}`,
+      `option${trimmedTitle}`
     );
     projectDropdown.appendChild(option);
   });
@@ -74,11 +76,12 @@ function displayToDosForEachProject(todos, projectName) {
   const projectDiv = document.getElementById(projectName);
 
   projectTodos.forEach((todo) => {
+    const trimmedTitle = trimWhitespace(todo.title);
     const listItem = createMyElement(
       "li",
       `Title: ${todo.title}`,
-      `list${todo.title}`,
-      `list${todo.title}`
+      `list${trimmedTitle}`,
+      `list${trimmedTitle}`
     );
     console.log(projectDiv);
     projectDiv.appendChild(listItem);

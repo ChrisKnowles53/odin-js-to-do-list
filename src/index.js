@@ -4,7 +4,7 @@ import initaliseEventListeners from "./dom";
 import createProject from "./projects";
 
 initaliseEventListeners();
-createProject("GettingStarted");
+createProject("Getting Started");
 
 let date = "2014, 01, 11";
 console.log(`Im in index.js ${dateFormat(date)}`);

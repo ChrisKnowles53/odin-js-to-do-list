@@ -13,7 +13,7 @@ const todos = [
     id: 1,
     title: "first task add a project",
     description: "Enter Project Title and click on Add Project",
-    project: "GettingStarted",
+    project: "Getting Started",
   },
 ];
 
@@ -40,8 +40,3 @@ const createToDo = (id, title, description, project) => {
 
 export default createToDo;
 export { todos };
-
-// ✅ now need to make it so everytime a todo is added it adds it to an array of objects
-// ✅ then create a list of todos within a project div
-// ✅ start by putting all the todos in one div
-// then make them link via project to the various project divs
