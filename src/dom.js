@@ -72,7 +72,6 @@ function updateProjectDropdown() {
 function displayToDosForEachProject(todos, projectName) {
   const projectTodos = todos.filter((todo) => todo.project === projectName);
   const projectDiv = document.getElementById(projectName);
-  //   projectDiv.innerHTML = "";
 
   projectTodos.forEach((todo) => {
     const listItem = createMyElement(
