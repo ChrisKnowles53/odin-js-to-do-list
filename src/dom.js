@@ -73,8 +73,8 @@ function updateProjectDropdown() {
 
 function displayToDosForEachProject(todos, projectName) {
   const projectTodos = todos.filter((todo) => todo.project === projectName);
-  const projectDiv = document.getElementById(projectName);
-
+  const trimmedProjectName = trimWhitespace(projectName);
+  const projectDiv = document.getElementById(trimmedProjectName);
   projectTodos.forEach((todo) => {
     const trimmedTitle = trimWhitespace(todo.title);
     const listItem = createMyElement(
@@ -83,7 +83,6 @@ function displayToDosForEachProject(todos, projectName) {
       `list${trimmedTitle}`,
       `list${trimmedTitle}`
     );
-    console.log(projectDiv);
     projectDiv.appendChild(listItem);
   });
 }

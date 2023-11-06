@@ -7,6 +7,7 @@
 // 💥 think about how the todo's are stored for easy retrieval into lists
 
 import { displayToDosForEachProject } from "./dom.js";
+import trimWhitespace from "./trimWhitespace.js";
 
 const todos = [
   {
@@ -25,7 +26,8 @@ function removeListEementsFromProject(projectDiv) {
 }
 
 const createToDo = (id, title, description, project) => {
-  const projectDiv = document.getElementById(project);
+  const trimmedProjectName = trimWhitespace(project);
+  const projectDiv = document.getElementById(trimmedProjectName);
   removeListEementsFromProject(projectDiv);
   const todo = {
     id,

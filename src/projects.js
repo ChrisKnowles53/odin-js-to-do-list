@@ -8,7 +8,6 @@ let projectArray = [];
 
 const createProject = (title) => {
   projectArray.push(title);
-  console.log(`project.js ${projectArray}`);
   updateProjectDropdown();
   addProjectDiv(projectArray);
 };
@@ -17,12 +16,23 @@ function addProjectDiv(projectArray) {
   const contentDiv = document.getElementById("content");
   contentDiv.innerHTML = "";
 
-  projectArray.forEach(function (title, index) {
+  projectArray.forEach((title, index) => {
     const trimmedTitle = trimWhitespace(title);
-    const projectDiv = createMyElement("div", title, title, title);
+    const projectDiv = createMyElement(
+      "div",
+      title,
+      trimmedTitle,
+      trimmedTitle
+    );
     contentDiv.appendChild(projectDiv);
-    // const projectButton = createMyElement("button", "See ToDo's", title, title);
-    // projectDiv.appendChild(projectButton);
+
+    const projectButton = createMyElement(
+      "button",
+      "See ToDo's",
+      `button${trimmedTitle}`,
+      `button${trimmedTitle}`
+    );
+    projectDiv.appendChild(projectButton);
     displayToDosForEachProject(todos, title);
   });
 }
