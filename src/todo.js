@@ -3,14 +3,7 @@ import { displayToDosForEachProject } from "./dom.js";
 import trimWhitespace from "./trimWhitespace.js";
 import { handleMoreDetailClick } from "./dom.js";
 
-const todos = [
-  //   {
-  //     id: 1,
-  //     title: "first task add a project",
-  //     description: "Enter Project Title and click on Add Project",
-  //     project: "Getting Started",
-  //   },
-];
+const todos = [];
 
 function removeListEementsFromProject(projectDiv) {
   const projectSpecificToDoListElements = projectDiv.querySelectorAll("li");

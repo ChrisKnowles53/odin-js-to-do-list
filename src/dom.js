@@ -99,13 +99,22 @@ function displayToDosForEachProject(todos, projectName) {
 }
 
 function handleMoreDetailClick(todo) {
-  console.log("im clicked");
   const trimmedTitle = trimWhitespace(todo.title);
   const listItem = document.getElementById(`list${trimmedTitle}`);
   const existingDescription = listItem.querySelector("p");
+  const moreDetailButton = document.getElementById(`button${todo.id}`);
+
   if (existingDescription) {
-    existingDescription.textContent = todo.description;
+    if (moreDetailButton.textContent === "More Detail") {
+      existingDescription.style.display = "block";
+      //   existingDescription.textContent = todo.description;
+      moreDetailButton.textContent = "Less Detail";
+    } else {
+      existingDescription.style.display = "none";
+      moreDetailButton.textContent = "More Detail";
+    }
   } else {
+    moreDetailButton.textContent = "Less Detail";
     const description = document.createElement("p");
     description.textContent = todo.description;
     listItem.appendChild(description);
