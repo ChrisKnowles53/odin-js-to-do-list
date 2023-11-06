@@ -26,13 +26,13 @@ function addProjectDiv(projectArray) {
     );
     contentDiv.appendChild(projectDiv);
 
-    const projectButton = createMyElement(
-      "button",
-      "See ToDo's",
-      `button${trimmedTitle}`,
-      `button${trimmedTitle}`
-    );
-    projectDiv.appendChild(projectButton);
+    // const projectButton = createMyElement(
+    //   "button",
+    //   "See ToDo's",
+    //   `button${trimmedTitle}`,
+    //   `button${trimmedTitle}`
+    // );
+    // projectDiv.appendChild(projectButton);
     displayToDosForEachProject(todos, title);
   });
 }

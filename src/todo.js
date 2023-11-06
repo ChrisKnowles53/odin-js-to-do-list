@@ -1,21 +1,15 @@
-// todo's will:
-// ✅ be created dynamically using factory or constructor to generate them
-// ✅ title, description
-// dueDate, priority, completed tick box
-// delete button, drop down for adding the todo to a project but not display it with the todo
-// ✅ what about a button and when clicked it uses a dialog box with a form in it
-// 💥 think about how the todo's are stored for easy retrieval into lists
-
+import createMyElement from "./createElement.js";
 import { displayToDosForEachProject } from "./dom.js";
 import trimWhitespace from "./trimWhitespace.js";
+import { handleMoreDetailClick } from "./dom.js";
 
 const todos = [
-  {
-    id: 1,
-    title: "first task add a project",
-    description: "Enter Project Title and click on Add Project",
-    project: "Getting Started",
-  },
+  //   {
+  //     id: 1,
+  //     title: "first task add a project",
+  //     description: "Enter Project Title and click on Add Project",
+  //     project: "Getting Started",
+  //   },
 ];
 
 function removeListEementsFromProject(projectDiv) {
@@ -25,18 +19,19 @@ function removeListEementsFromProject(projectDiv) {
   });
 }
 
-const createToDo = (id, title, description, project) => {
+const createToDo = (title, description, project) => {
   const trimmedProjectName = trimWhitespace(project);
   const projectDiv = document.getElementById(trimmedProjectName);
-  removeListEementsFromProject(projectDiv);
+
   const todo = {
-    id,
+    id: (Math.random() * 256).toFixed(4),
     title,
     description,
     project,
   };
   todos.push(todo);
   console.table(todos);
+  removeListEementsFromProject(projectDiv);
   displayToDosForEachProject(todos, project);
 };
 

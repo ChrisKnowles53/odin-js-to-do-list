@@ -16,8 +16,6 @@ function handleCloseButtonClick() {
 
 function handleFormSubmit(event) {
   event.preventDefault();
-  //uuidv4 - I had webpack build issues so i paused on that
-  const uniqueId = Math.random() * 256;
 
   const addToDoForm = document.getElementById("addToDoForm");
 
@@ -26,7 +24,7 @@ function handleFormSubmit(event) {
   const description = document.getElementById("description").value;
   const project = document.getElementById("project").value;
 
-  createToDo(uniqueId, title, description, project);
+  createToDo(title, description, project);
 
   dialog.close();
   addToDoForm.reset();
@@ -45,6 +43,7 @@ export default function initaliseEventListeners() {
   const addToDoForm = document.getElementById("addToDoForm");
   addToDoForm.addEventListener("submit", handleFormSubmit);
 }
+
 function handleAddProject() {
   const projectTitleInput = document.getElementById("projectTitle");
   const projectTitle = projectTitleInput.value;
@@ -84,6 +83,37 @@ function displayToDosForEachProject(todos, projectName) {
       `list${trimmedTitle}`
     );
     projectDiv.appendChild(listItem);
+
+    const moreDetailButton = createMyElement(
+      "button",
+      "More Detail",
+      `button${todo.id}`,
+      `button${todo.id}`
+    );
+    listItem.appendChild(moreDetailButton);
+
+    moreDetailButton.addEventListener("click", () => {
+      handleMoreDetailClick(todo);
+    });
   });
 }
-export { updateProjectDropdown, displayToDosForEachProject };
+
+function handleMoreDetailClick(todo) {
+  console.log("im clicked");
+  const trimmedTitle = trimWhitespace(todo.title);
+  const listItem = document.getElementById(`list${trimmedTitle}`);
+  const existingDescription = listItem.querySelector("p");
+  if (existingDescription) {
+    existingDescription.textContent = todo.description;
+  } else {
+    const description = document.createElement("p");
+    description.textContent = todo.description;
+    listItem.appendChild(description);
+  }
+}
+
+export {
+  updateProjectDropdown,
+  displayToDosForEachProject,
+  handleMoreDetailClick,
+};
