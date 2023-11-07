@@ -11,11 +11,17 @@
       <form id="addToDoForm">
         <label for="title">Title:</label><br />
         <input type="text" id="title" name="title" /><br />
+
         <label for="description">Description:</label><br />
-        <input type="text" id="description" name="description" /><br />
+        <textarea type="text" id="description" name="description"></textarea>
+        <br />
+
+        <label for="project">Assign to:</label>
         <select id="project" name="project"></select
         ><br />
-        <button class="submit" autofocus>Submit</button>
+        <button type="submit" class="submit" data-action="submit">
+          Submit
+        </button>
       </form>
     </dialog>
     <button class="add-ToDo">Add ToDo</button>

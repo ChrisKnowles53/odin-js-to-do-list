@@ -16,7 +16,7 @@ let date = "2014, 01, 11";
 console.log(`Im in index.js ${dateFormat(date)}`);
 
 // todo.js - Started not completed
-// expand a single todo to see/edit its details
+// expand a single todo and have an edit option to edit its details
 // delete a todo
 
 // projects.js -

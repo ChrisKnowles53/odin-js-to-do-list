@@ -3,6 +3,7 @@ import createProject from "./projects";
 import { projectArray } from "./projects";
 import createMyElement from "./createElement";
 import trimWhitespace from "./trimWhitespace";
+import { editToDo, currentAction } from "./todo";
 
 function handleAddToDoClick() {
   const dialog = document.querySelector("dialog");
@@ -16,7 +17,6 @@ function handleCloseButtonClick() {
 
 function handleFormSubmit(event) {
   event.preventDefault();
-
   const addToDoForm = document.getElementById("addToDoForm");
 
   const dialog = document.querySelector("dialog");
@@ -26,6 +26,7 @@ function handleFormSubmit(event) {
 
   createToDo(title, description, project);
 
+  //   currentAction = "add";
   dialog.close();
   addToDoForm.reset();
 }
@@ -40,6 +41,7 @@ export default function initaliseEventListeners() {
       handleAddProject();
     }
   });
+
   const addToDoForm = document.getElementById("addToDoForm");
   addToDoForm.addEventListener("submit", handleFormSubmit);
 }
@@ -92,8 +94,19 @@ function displayToDosForEachProject(todos, projectName) {
     );
     listItem.appendChild(moreDetailButton);
 
+    const editButton = createMyElement(
+      "button",
+      "Edit",
+      `edit${todo.id}`,
+      `edit${todo.id}`
+    );
+    listItem.appendChild(editButton);
+
     moreDetailButton.addEventListener("click", () => {
       handleMoreDetailClick(todo);
+    });
+    editButton.addEventListener("click", () => {
+      editToDo(todo);
     });
   });
 }
@@ -107,7 +120,6 @@ function handleMoreDetailClick(todo) {
   if (existingDescription) {
     if (moreDetailButton.textContent === "More Detail") {
       existingDescription.style.display = "block";
-      //   existingDescription.textContent = todo.description;
       moreDetailButton.textContent = "Less Detail";
     } else {
       existingDescription.style.display = "none";
@@ -125,4 +137,6 @@ export {
   updateProjectDropdown,
   displayToDosForEachProject,
   handleMoreDetailClick,
+  handleAddToDoClick,
+  handleCloseButtonClick,
 };
