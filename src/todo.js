@@ -59,9 +59,14 @@ function editToDo(todo) {
       todo.description = descriptionInput.value;
       saveButton.textContent = "Submit";
     } else if (saveButton.getAttribute("data-action") === "save") {
-      console.log("save button clicked");
-      // code to edit the todo
-      saveButton.textContent = "Save";
+      const index = todos.findIndex((t) => t.id === todo.id);
+      console.log(index);
+      if (index !== -1) {
+        todos[index].id = todo.id;
+        todos[index].title = titleInput.value;
+        todos[index].description = descriptionInput.value;
+        saveButton.textContent = "Submit";
+      }
     }
   });
 }
